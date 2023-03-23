@@ -13,15 +13,15 @@ function GraphArea(props){
   const Array = [
     {
       name: "Start Today",
-      Amount: props.startToday,
+      Amount: props.graphData && props.graphData.startToday,
     },
     {
       name: "Delayed Start",
-      Amount: props.delayedStart,
+      Amount: props.graphData && props.graphData.delayedStart,
     },
     {
       name: "Notional Loss",
-      Amount: props.notionalLoss,
+      Amount: props.graphData && props.graphData.notionalLoss,
       fill: "#DF2E38",
     },
   ];
@@ -39,12 +39,12 @@ function GraphArea(props){
         After {props.investmentPeriod} years, you will have
         <br />
         <span className="totalamount">
-          ₹ {toIndianRupees(props.delayedStart)}
+          ₹ {toIndianRupees(props.graphData.delayedStart)}
         </span>
         <br />
         That's{" "}
         <span className="potentialamount">
-          ₹ {toIndianRupees(props.startToday)}
+          ₹ {toIndianRupees(props.graphData.startToday)}
         </span>{" "}
         as potential capital gains <br /> on your investment of
         <span className="delay">

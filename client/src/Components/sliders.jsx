@@ -8,7 +8,7 @@ import { styled } from "@mui/material/styles";
 
 
 function Sliders(props) {
-  const [inputVal, setInputVal] = useState(props.mn);
+
 
   //for Scale of Sliders
 
@@ -199,62 +199,55 @@ function Sliders(props) {
   
 
   const handleSliderChange = (event, newValue) => {
-    props.changeValues(props.index, newValue);
-    setInputVal(newValue);
+    props.onSliderChange(props.type, newValue);
   };
 
   const handleInputChange = (event) => {
-
     //FrontEnd validations
 
-    let val = event.target.value;
-    if (val.startsWith("-")) {
-      const errField =
-        document.getElementsByClassName("err-field")[props.index];
-      errField.style.display = "block";
-      setTimeout(() => {
-        errField.style.display = "none";
-      }, 1500);
-      setInputVal(val);
-      props.changeValues(props.index, props.mn);
-      return;
-    }
+        let val = event.target.value;
+        // if (val.startsWith("-")) {
+        //   const errField =
+        //     document.getElementsByClassName("err-field")[props.index];
+        //   errField.style.display = "block";
+        //   setTimeout(() => {
+        //     errField.style.display = "none";
+        //   }, 1500);
+        //   props.onSliderChange(props.type, props.min);
+        //   return;
+        // }
 
-    if (Number(val) < props.mn) {
-      setInputVal(val);
-      props.changeValues(props.index, props.mn);
-      return;
-    }
+        // if (Number(val) < props.min) {
+        //   props.onSliderChange(props.type, props.min);
+        //   return;
+        // }
 
-    if (Number(val) > props.mx) {
-      setInputVal(val);
-      props.changeValues(props.index, props.mx);
-      return;
-    }
+        // if (Number(val) > props.max) {
+        //   props.onSliderChange(props.type, props.max);
+        //   return;
+        // }
 
-    setInputVal(val);
-    props.changeValues(props.index, val === "" ? props.mn : Number(val));
+        //props.onSliderChange(props.type, val === "" ? props.min : Number(val));
+        props.onSliderChange(props.type, Number(val));
+         
   };
 
   const handleBlur = (event) => {
     let val = event.target.value;
 
     if (val === "-") {
-      props.changeValues(props.index, props.mn);
-      setInputVal(props.mn);
+      props.onSliderChange(props.type, props.min);
       return;
     }
 
     val = Number(val);
 
-    if (val < props.mn) {
-      props.changeValues(props.index, props.mn);
-      setInputVal(props.mn);
+    if (val < props.min) {
+      props.onSliderChange(props.type, props.min);
       return;
     }
-    if (val > props.mx) {
-      props.changeValues(props.index, props.mx);
-      setInputVal(props.mx);
+    if (val > props.max) {
+      props.onSliderChange(props.type, props.max);
       return;
     }
   };
@@ -268,20 +261,20 @@ function Sliders(props) {
           </Grid>
           <Grid item className="grid-item2">
             <Input2
-              value={inputVal}
+              value={props.value}
               size="small"
               onBlur={handleBlur}
               onChange={handleInputChange}
               inputProps={{
                 step: props.steps,
-                min: props.mn,
-                max: props.mx,
-                type: "number",
+                // min: props.min,
+                // max: props.max,
+                // type: "string",
               }}
             />
           </Grid>
         </Grid>
-        <div className="err-field">Negative number not allowed</div>
+        {/* <div className="err-field">Negative number not allowed</div> */}
 
         <Grid container>
           <Grid item xs>
@@ -289,8 +282,8 @@ function Sliders(props) {
               aria-label="Custom marks"
               defaultValue={props.value}
               getAriaValueText={valuetext}
-              min={props.mn}
-              max={props.mx}
+              min={props.min}
+              max={props.max}
               step={props.steps}
               marks={labelArr[props.index]}
               value={props.value}

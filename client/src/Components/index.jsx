@@ -1,64 +1,74 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LeftPanel from "./sliderPanel";
-import GraphArea from "./graphArea";
-import ErrorPage from "./errorPage";
+import SliderPanel from "../../src/Components/sliderPanel";
+import GraphArea from "../../src/Components/graphArea";
+import ErrorPage from "../../src/Components/errorPage";
 
 function Calculator() {
   const [monthlyInvestment, setMonthlyInvestment] = useState(500);
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [rateOfReturn, setRateOfReturn] = useState(1);
   const [delay, setDelay] = useState(1);
-  const [startToday, setStartToday] = useState();
-  const [delayedStart, setDelayedStart] = useState();
-  const [notionalLoss, setNotionalLoss] = useState();
-  const [err, setErr] = useState();
+  const [graphData, setGraphData] = useState({});
+  const [err, setErr] = useState(false);
 
-  //Set Values of monthly investment,rate of return, investmment period, delay 
+  //Set Values of monthly investment,rate of return, investmment period, delay
 
-  function changeValues(index, val) {
-    switch (index) {
-      case 0:
+  function onSliderChange(type, val) {
+    switch (type) {
+      case "monthlyInvestment":
         setMonthlyInvestment(val);
         break;
-      case 1:
+      case "investmentPeriod":
         setInvestmentPeriod(val);
         break;
-      case 2:
+      case "rateOfReturn":
         setRateOfReturn(val);
         break;
-      case 3:
+      case "delay":
         setDelay(val);
         break;
     }
   }
 
-  //Api calling 
+  //Api calling
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await axios.get("/getResults", {
+    axios
+      .get("/getResults", {
         params: {
           monthlyInvestment: monthlyInvestment,
           investmentPeriod: investmentPeriod,
           rateOfReturn: rateOfReturn,
           delay: delay,
         },
-      });
-      const response = res.data.result;
-      // for backend validation and showing the error page 
-      if (res.data.status == 0) {
-        setStartToday(response.startToday);
-        setDelayedStart(response.delayedStart);
-        setNotionalLoss(response.notionalLoss);
-        setErr(false);
-      }
-      if (res.data.status == -1) {
+      })
+      .then((res) => {
+        // for backend validation and showing the error page
+        if (res.data && res.data.status == 0) {
+          setGraphData(res.data.result && res.data.result);
+          setErr(false);
+        } else {
+          setErr(true);
+        }
+      })
+      .catch((error) => {
         setErr(true);
-      }
-    }
-    fetchData();
+      })
   }, [monthlyInvestment, investmentPeriod, rateOfReturn, delay]);
+
+  function onValueChange(field,type,val){
+    switch(field){
+      case "input":
+        onSliderChange(field,type,value)
+        break;
+      case "slider":
+        break;
+
+    }
+  }
+
+
 
   return (
     <div className="calculator">
@@ -68,12 +78,12 @@ function Calculator() {
         It tells you how much wealth you can create by making monthly investment
       </h5>
       <div className="container">
-        <LeftPanel
+        <SliderPanel
           monthlyInvestment={monthlyInvestment}
           investmentPeriod={investmentPeriod}
           rateOfReturn={rateOfReturn}
           delay={delay}
-          changeValues={changeValues}
+          onSliderChange={onSliderChange}
         />
         {err ? (
           <ErrorPage />
@@ -81,9 +91,7 @@ function Calculator() {
           <GraphArea
             monthlyInvestment={monthlyInvestment}
             investmentPeriod={investmentPeriod}
-            startToday={startToday}
-            delayedStart={delayedStart}
-            notionalLoss={notionalLoss}
+            graphData={graphData}
           />
         )}
       </div>

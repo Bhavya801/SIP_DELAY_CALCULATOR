@@ -1,40 +1,45 @@
 import React from "react";
-import SliderArea from "./sliders";
+import SliderArea from "../../src/Components/sliders";
 
 function SliderPanel(props) {
   return (
     <div class="sliderPanel">
       <SliderArea
         index={0}
-        mn={500}
-        mx={100000}
+        type = "monthlyInvestment"
+        min={500}
+        max={100000}
         steps={50}
         value={props.monthlyInvestment}
-        changeValues={props.changeValues}
+        onSliderChange={props.onSliderChange}
+        
       />
       <SliderArea
         index={1}
-        mn={1}
-        mx={30}
+        type = "investmentPeriod"
+        min={1}
+        max={30}
         steps={1}
         value={props.investmentPeriod}
-        changeValues={props.changeValues}
+        onSliderChange={props.onSliderChange}
       />
       <SliderArea
         index={2}
-        mn={1}
-        mx={30}
+        type = "rateOfReturn"
+        min={1}
+        max={30}
         steps={0.1}
         value={props.rateOfReturn}
-        changeValues={props.changeValues}
+        onSliderChange={props.onSliderChange}
       />
       <SliderArea
         index={3}
-        mn={1}
-        mx={120}
+        type = "delay"
+        min={1}
+        max={120}
         steps={1}
         value={props.delay}
-        changeValues={props.changeValues}
+        onSliderChange={props.onSliderChange}
       />
     </div>
   );
