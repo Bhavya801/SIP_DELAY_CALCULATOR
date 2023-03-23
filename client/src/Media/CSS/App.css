@@ -41,7 +41,7 @@
   position: relative;
 }
 
-.leftPanel{
+.sliderPanel{
   width: 50%;
   border: 1px solid #EAEBED;
   margin: 10px;
@@ -103,7 +103,7 @@
   margin: 20px;
 }
 
-.slider-area{
+.sliders{
   margin: 40px 0px 40px 30px;
 }
 

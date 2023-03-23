@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 
-function graphArea(props){
+function GraphArea(props){
   const Array = [
     {
       name: "Start Today",
@@ -81,4 +81,4 @@ function graphArea(props){
   );
 };
 
-export default graphArea;
+export default GraphArea;

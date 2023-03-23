@@ -7,8 +7,10 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 
 
-function sliderArea(props) {
+function Sliders(props) {
   const [inputVal, setInputVal] = useState(props.mn);
+
+  //for Scale of Sliders
 
   const miArray = [
     {
@@ -258,7 +260,7 @@ function sliderArea(props) {
   };
 
   return (
-    <div className="slider-area">
+    <div className="sliders">
       <Box sx={{ width: 500 }}>
         <Grid className="grid" container>
           <Grid item className="grid-item1">
@@ -302,4 +304,4 @@ function sliderArea(props) {
   );
 }
 
-export default sliderArea;
+export default Sliders;

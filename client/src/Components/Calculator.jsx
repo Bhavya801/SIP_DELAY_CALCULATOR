@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LeftPanel from "./LeftPanel";
-import GraphArea from "./GraphArea";
-import ErrorPage from "./ErrorPage";
+import LeftPanel from "./sliderPanel";
+import GraphArea from "./graphArea";
+import ErrorPage from "./errorPage";
 
 function Calculator() {
   const [monthlyInvestment, setMonthlyInvestment] = useState(500);
@@ -13,6 +13,8 @@ function Calculator() {
   const [delayedStart, setDelayedStart] = useState();
   const [notionalLoss, setNotionalLoss] = useState();
   const [err, setErr] = useState();
+
+  //Set Values of monthly investment,rate of return, investmment period, delay 
 
   function changeValues(index, val) {
     switch (index) {
@@ -31,7 +33,7 @@ function Calculator() {
     }
   }
 
-  //For  api
+  //Api calling 
 
   useEffect(() => {
     async function fetchData() {
@@ -44,6 +46,7 @@ function Calculator() {
         },
       });
       const response = res.data.result;
+      // for backend validation and showing the error page 
       if (res.data.status == 0) {
         setStartToday(response.startToday);
         setDelayedStart(response.delayedStart);

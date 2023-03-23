@@ -1,9 +1,9 @@
 import React from "react";
-import SliderArea from "./SliderArea";
+import SliderArea from "./sliders";
 
-function leftPanel(props) {
+function SliderPanel(props) {
   return (
-    <div class="leftPanel">
+    <div class="sliderPanel">
       <SliderArea
         index={0}
         mn={500}
@@ -40,4 +40,4 @@ function leftPanel(props) {
   );
 }
 
-export default leftPanel;
+export default SliderPanel;

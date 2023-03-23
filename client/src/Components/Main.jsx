@@ -1,5 +1,5 @@
 import React from "react";
-import Calculator from "./Calculator";
+import Calculator from "./calculator";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@mui/material/IconButton";
 

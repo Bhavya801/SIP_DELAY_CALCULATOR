@@ -1,6 +1,6 @@
 import "./Media/CSS/App.css";
-import SideBar from "./Components/SideBar";
-import Main from "./Components/Main"
+import SideBar from "./Components/sideBar";
+import Main from "./Components/main"
 
 function App() {
   return (
