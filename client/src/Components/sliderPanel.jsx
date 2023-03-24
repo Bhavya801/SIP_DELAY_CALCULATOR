@@ -1,6 +1,7 @@
 import React from "react";
 import SliderArea from "../../src/Components/sliders";
 
+
 function SliderPanel(props) {
   return (
     <div class="leftContainer">

@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   ResponsiveContainer,
   BarChart,
@@ -9,7 +10,7 @@ import {
   Tooltip,
 } from "recharts";
 
-function GraphArea(props){
+function GraphArea(props) {
   const Array = [
     {
       name: "Start Today",
@@ -79,6 +80,6 @@ function GraphArea(props){
       </ResponsiveContainer>
     </div>
   );
-};
+}
 
 export default GraphArea;

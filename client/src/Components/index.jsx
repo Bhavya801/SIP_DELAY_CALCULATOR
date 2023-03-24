@@ -4,6 +4,7 @@ import SliderPanel from "../../src/Components/sliderPanel";
 import GraphArea from "./graphArea";
 import ErrorPage from "./errorPage";
 
+
 function Calculator() {
   const [monthlyInvestment, setMonthlyInvestment] = useState(500);
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
@@ -54,12 +55,8 @@ function Calculator() {
       })
       .catch((error) => {
         setErr(true);
-      })
+      });
   }, [monthlyInvestment, investmentPeriod, rateOfReturn, delay]);
-
- 
-
-
 
   return (
     <div className="rightMain">
