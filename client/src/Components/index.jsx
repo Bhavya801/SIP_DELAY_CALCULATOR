@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SliderPanel from "../../src/Components/sliderPanel";
-import GraphArea from "../../src/Components/graphArea";
-import ErrorPage from "../../src/Components/errorPage";
+import GraphArea from "./graphArea";
+import ErrorPage from "./errorPage";
 
 function Calculator() {
   const [monthlyInvestment, setMonthlyInvestment] = useState(500);
@@ -57,21 +57,12 @@ function Calculator() {
       })
   }, [monthlyInvestment, investmentPeriod, rateOfReturn, delay]);
 
-  function onValueChange(field,type,val){
-    switch(field){
-      case "input":
-        onSliderChange(field,type,value)
-        break;
-      case "slider":
-        break;
-
-    }
-  }
+ 
 
 
 
   return (
-    <div className="calculator">
+    <div className="rightMain">
       <h2 className="heading"> SIP Delay Calculator</h2>
 
       <h5 className="info">

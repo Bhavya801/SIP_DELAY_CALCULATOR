@@ -3,10 +3,10 @@ import Main from "../src/Components/main"
 
 function App() {
   return (
-    <div className="sipcalculator">
-      <div className='side-bar'></div>
+    <>
+      <div className='leftSideBox'></div>
       <Main />
-    </div>
+    </>
   );
 }
 
