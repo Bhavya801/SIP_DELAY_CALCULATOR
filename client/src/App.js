@@ -1,13 +1,12 @@
 import "./Media/CSS/App.css";
-import SideBar from "./Components/sideBar";
-import Main from "./Components/main"
+import Main from "../src/Components/main"
 
 function App() {
   return (
-    <div className="sipcalculator">
-      <SideBar />
+    <>
+      <div className='leftSideBox'></div>
       <Main />
-    </div>
+    </>
   );
 }
 

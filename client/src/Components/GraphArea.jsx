@@ -34,7 +34,7 @@ function GraphArea(props){
   }
 
   return (
-    <div className="graphArea">
+    <div className="rightContainer">
       <p className="graph-text">
         After {props.investmentPeriod} years, you will have
         <br />

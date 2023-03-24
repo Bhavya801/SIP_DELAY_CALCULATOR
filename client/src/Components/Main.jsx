@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 
 function Main() {
   return (
-    <div className="main">
+    <div className="rightSideBox">
       <h4 className="back">
         <IconButton size={"small"} sx={{ color: "black" }}>
           <ArrowBackIcon /> Back
