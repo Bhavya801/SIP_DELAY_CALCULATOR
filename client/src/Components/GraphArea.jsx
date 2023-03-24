@@ -28,8 +28,7 @@ function GraphArea(props) {
   ];
 
   function toIndianRupees(sum) {
-    return Number(sum)
-      .toString()
+    return Number(sum) .toString()
       .replace(/\D/g, "")
       .replace(/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/g, "$1,");
   }

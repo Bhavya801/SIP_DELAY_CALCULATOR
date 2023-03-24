@@ -4,6 +4,7 @@ import SliderArea from "../../src/Components/sliders";
 
 function SliderPanel(props) {
   return (
+    
     <div class="leftContainer">
       <SliderArea
         index={0}

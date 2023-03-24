@@ -5,7 +5,7 @@ function ErrorPage() {
     <>
       <div className="errorPage">
         <h1>OOPS!</h1>
-        <h2>Something is not good!!</h2>
+        <h2>Something is not good!</h2>
       </div>
     </>
   );

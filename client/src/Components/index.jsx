@@ -6,6 +6,7 @@ import ErrorPage from "./errorPage";
 
 
 function Calculator() {
+  
   const [monthlyInvestment, setMonthlyInvestment] = useState(500);
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [rateOfReturn, setRateOfReturn] = useState(1);
